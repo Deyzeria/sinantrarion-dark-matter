@@ -1,0 +1,189 @@
+{
+  "id": "sinantrarion-dark-matter",
+  "title": "Sinantrarion Dark Matter",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "Sinantrarion",
+      "discord": "Sinantrarion",
+      "flags": {}
+    }
+  ],
+  "packs": [
+    {
+      "name": "dark-matter-weapons-and-armors",
+      "label": "Dark Matter Weapons and Armors",
+      "path": "packs/dark-matter-weapons-and-armors",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-classes-and-subclasses",
+      "label": "Dark Matter Classes and Subclasses",
+      "path": "packs/dark-matter-classes-and-subclasses",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-races",
+      "label": "Dark Matter Races",
+      "path": "packs/dark-matter-races",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-feats",
+      "label": "Dark Matter Feats",
+      "path": "packs/dark-matter-feats",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-backgrounds",
+      "label": "Dark Matter Backgrounds",
+      "path": "packs/dark-matter-backgrounds",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-grafts",
+      "label": "Dark Matter Grafts",
+      "path": "packs/dark-matter-grafts",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-magic-items",
+      "label": "Dark Matter Magic Items",
+      "path": "packs/dark-matter-magic-items",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-ship-parts",
+      "label": "Dark Matter Ship Parts",
+      "path": "packs/dark-matter-ship-parts",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-ship-premades",
+      "label": "Dark Matter Ship Premades",
+      "path": "packs/dark-matter-ship-premades",
+      "type": "Actor",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-characters",
+      "label": "Dark Matter Characters",
+      "path": "packs/dark-matter-characters",
+      "type": "Actor",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-spells",
+      "label": "Dark Matter Spells",
+      "path": "packs/dark-matter-spells",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-journals",
+      "label": "Dark Matter Journals",
+      "path": "packs/dark-matter-journals",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dark-matter-rolltables",
+      "label": "Dark Matter Rolltables",
+      "path": "packs/dark-matter-rolltables",
+      "type": "RollTable",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "/sinantrarion-dark-matter.mjs"
+  ],
+  "manifest": "https://raw.githubusercontent.com/Sinantrarion/sinantrarion-dark-matter/master/module.json",
+  "url": "https://github.com/Sinantrarion/sinantrarion-dark-matter",
+  "download": "https://github.com/Sinantrarion/sinantrarion-dark-matter/archive/refs/heads/main.zip"
+}
