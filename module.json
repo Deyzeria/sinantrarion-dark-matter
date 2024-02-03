@@ -180,6 +180,49 @@
       "flags": {}
     }
   ],
+  "packFolders": [
+    {
+      "name": "Dark Matter",
+      "sorting": "m",
+      "color": "#6c0094",
+      "folders": [
+        {
+          "name": "Character Options",
+          "sorting": "m",
+          "color": "#8f4000",
+          "packs": [
+            "dark-matter-weapons-and-armors",
+            "dark-matter-classes-and-subclasses",
+            "dark-matter-races",
+            "dark-matter-feats",
+            "dark-matter-backgrounds",
+            "dark-matter-grafts",
+            "dark-matter-spells"
+          ]
+        },
+        {
+          "name": "DM Tools",
+          "sorting": "m",
+          "color": "#06005c",
+          "packs": [
+            "dark-matter-characters",
+            "dark-matter-journals",
+            "dark-matter-magic-items",
+            "dark-matter-rolltables"
+          ]
+        },
+        {
+          "name": "Ships",
+          "sorting": "m",
+          "color": "#003cc7",
+          "packs": [
+            "dark-matter-ship-premades",
+            "dark-matter-ship-parts"
+          ]
+        }
+      ]
+    }
+  ],
   "esmodules": [
     "/sinantrarion-dark-matter.mjs"
   ],

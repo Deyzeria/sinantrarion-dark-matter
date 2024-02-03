@@ -30,8 +30,10 @@ Hooks.once("init", () => {
 
   SetupWeapons();
   SetupArmors();
-
+  SetupTools();
   SetupLanguages();
+
+  SetupExtra();
 });
 
 Hooks.once("setup", () => {
@@ -133,16 +135,36 @@ function SetupLanguages() {
   CONFIG.DND5E.languages.standard.children["aviara"] = "Avia-Ra";
   CONFIG.DND5E.languages.standard.children["skathari"] = "Skathári";
   CONFIG.DND5E.languages.standard.children["wrothian"] = "Wrothian";
+
+  delete CONFIG.DND5E.languages.exotic.children.aarakocra;
+  delete CONFIG.DND5E.languages.exotic.children.gith;
+  delete CONFIG.DND5E.languages.exotic.children.gnoll;
+}
+
+function SetupTools() {
+  var tools = [
+    {abbr: "circuitrykit", id: "PWOvhnCGqrXoGwSa"},
+    {abbr: "mechanisttools", id: "TFrrRLUihsfSLJRH"},
+    {abbr: "shipmaintools", id: "yK9uBD7bD58oIduu"}
+  ]
+
+  tools.forEach(tool => {
+    CONFIG.DND5E.toolIds[tool.abbr] = `sinantrarion-dark-matter.dark-matter-weapons-and-armors.${tool.id}`;
+  });
+}
+
+function SetupExtra() {
+  CONFIG.DND5E.featureTypes.class.subtypes["gadget"] = "Gadget";
 }
 
 function setupDaeFields() {
   let daeflags = [];
 
   cusSkills.forEach(sk => {
-    daeflags.push(`system.skills.${sk}.value`);
-    daeflags.push(`system.skills.${sk}.ability`);
-    daeflags.push(`system.skills.${sk}.bonuses.check`);
-    daeflags.push(`system.skills.${sk}.bonuses.passive`);
+    daeflags.push(`system.skills.${sk.abbr}.value`);
+    daeflags.push(`system.skills.${sk.abbr}.ability`);
+    daeflags.push(`system.skills.${sk.abbr}.bonuses.check`);
+    daeflags.push(`system.skills.${sk.abbr}.bonuses.passive`);
   });
 
   if (game.modules.get("dae")?.active) {
