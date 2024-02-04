@@ -4,7 +4,7 @@ const cusSkills = [{
   ability: "int",
   fullKey: "data",
   icon: "icons/commodities/tech/blueprint.webp"
-}, 
+},
 {
   abbr: "pil",
   label: "Piloting",
@@ -72,6 +72,8 @@ Hooks.once("init", () => {
   SetupLanguages();
 
   SetupExtra();
+
+  SetupRuleReferences();
 });
 
 Hooks.once("setup", () => {
@@ -110,41 +112,41 @@ function SetupWeapons() {
   }
 
   var weapons = [
-    {abbr: "sunstaff", id: "P0zs0GGWKJ0v1K3O"},
-    {abbr: "ioncannon", id: "Me6GjvNtXeFl6O09"},
-    {abbr: "phaser", id: "MyFoKpbBP2q2qNwf"},
-    {abbr: "repeater", id: "IEOzR0UUDX2mVk97"},
-    {abbr: "standardcarb", id: "BFnOvLLioJlJVg1u"},
-    {abbr: "swarmpistol", id: "GGDc0Q6bMnNaIIaZ"},
+    { abbr: "sunstaff", id: "P0zs0GGWKJ0v1K3O" },
+    { abbr: "ioncannon", id: "Me6GjvNtXeFl6O09" },
+    { abbr: "phaser", id: "MyFoKpbBP2q2qNwf" },
+    { abbr: "repeater", id: "IEOzR0UUDX2mVk97" },
+    { abbr: "standardcarb", id: "BFnOvLLioJlJVg1u" },
+    { abbr: "swarmpistol", id: "GGDc0Q6bMnNaIIaZ" },
 
-    {abbr: "antimattercarb", id: "lZI08spuGpahZEJc"},
-    {abbr: "blitzcannon", id: "5BFgtg0TYQ3yRqmB"},
-    {abbr: "concussionrifle", id: "5yc9YdbIUchJ36yM"},
-    {abbr: "diodebeam", id: "O44sCwwXP9gD9lUb"},
-    {abbr: "magnus", id: "PsK1MhkvbfCGBjbb"},
-    {abbr: "plasmalauncher", id: "TGRBYOqynAAz9uao"},
-    {abbr: "psionichelm", id: "lr6P1YueGnD2R90D"},
-    {abbr: "recgun", id: "tTAUf0tPVS2rYzX0"},
-    {abbr: "singularity", id: "w6Lkd9ZhefHJzj7R"},
-    {abbr: "volcanic", id: "yKtsBur2JBx2ggO6"},
-    
-    {abbr: "laserclaws", id: "4MUbhNDTnhughhiS"},
-    {abbr: "antidagger", id: "50qzh3GseS9bJCyq"},
-    {abbr: "skawarclub", id: "INVMYdx54h5POgyb"},
-    {abbr: "voidshackles", id: "KZLndcbqcepG8kXS"},
-    {abbr: "ballisticgloves", id: "dsf30JqPyRwssciG"},
-    
-    {abbr: "battlefist", id: "3Z4R2SyU8Xeohl0l"},
-    {abbr: "crystallinerod", id: "5TQCty2pPge5Sqem"},
-    {abbr: "laserhalfsword", id: "6dTNTu5ynkQpVEpw"},
-    {abbr: "lasersword", id: "8rQM0oT74xPI6azF"},
-    {abbr: "photoniclash", id: "RUEDsYx89XmUro2L"},
-    {abbr: "plasmacutter", id: "SbiDzF50pXJkOmRM"},
-    {abbr: "repulsorgauntlet", id: "TRiFvDNnzLbIbTfm"},
-    {abbr: "rockethammer", id: "VjfqsbO0hWlKFfwC"},
-    {abbr: "thermallance", id: "YYFuIlhyemYdakLI"},
-    {abbr: "arcbaton", id: "jgeoKutwqtVp9bco"},
-    {abbr: "wrenchinator", id: "sMePn4OSoeQdmW8v"},
+    { abbr: "antimattercarb", id: "lZI08spuGpahZEJc" },
+    { abbr: "blitzcannon", id: "5BFgtg0TYQ3yRqmB" },
+    { abbr: "concussionrifle", id: "5yc9YdbIUchJ36yM" },
+    { abbr: "diodebeam", id: "O44sCwwXP9gD9lUb" },
+    { abbr: "magnus", id: "PsK1MhkvbfCGBjbb" },
+    { abbr: "plasmalauncher", id: "TGRBYOqynAAz9uao" },
+    { abbr: "psionichelm", id: "lr6P1YueGnD2R90D" },
+    { abbr: "recgun", id: "tTAUf0tPVS2rYzX0" },
+    { abbr: "singularity", id: "w6Lkd9ZhefHJzj7R" },
+    { abbr: "volcanic", id: "yKtsBur2JBx2ggO6" },
+
+    { abbr: "laserclaws", id: "4MUbhNDTnhughhiS" },
+    { abbr: "antidagger", id: "50qzh3GseS9bJCyq" },
+    { abbr: "skawarclub", id: "INVMYdx54h5POgyb" },
+    { abbr: "voidshackles", id: "KZLndcbqcepG8kXS" },
+    { abbr: "ballisticgloves", id: "dsf30JqPyRwssciG" },
+
+    { abbr: "battlefist", id: "3Z4R2SyU8Xeohl0l" },
+    { abbr: "crystallinerod", id: "5TQCty2pPge5Sqem" },
+    { abbr: "laserhalfsword", id: "6dTNTu5ynkQpVEpw" },
+    { abbr: "lasersword", id: "8rQM0oT74xPI6azF" },
+    { abbr: "photoniclash", id: "RUEDsYx89XmUro2L" },
+    { abbr: "plasmacutter", id: "SbiDzF50pXJkOmRM" },
+    { abbr: "repulsorgauntlet", id: "TRiFvDNnzLbIbTfm" },
+    { abbr: "rockethammer", id: "VjfqsbO0hWlKFfwC" },
+    { abbr: "thermallance", id: "YYFuIlhyemYdakLI" },
+    { abbr: "arcbaton", id: "jgeoKutwqtVp9bco" },
+    { abbr: "wrenchinator", id: "sMePn4OSoeQdmW8v" },
   ];
 
   weapons.forEach(weapon => {
@@ -156,25 +158,85 @@ function SetupArmors() {
   CONFIG.DND5E.armorIds = [];
 
   var armors = [
-    {abbr: "adamhardsuit", id: "IbQ0xED2hHufWyGy"},
-    {abbr: "ferrofhardsuit", id: "oW5zBg9C7paBNFe1"},
-    {abbr: "starshardsuit", id: "vBFbmg9a7zbJYWsH"},
-    {abbr: "carbhardsuit", id: "iHW7OEaUrXktC4X7"},
+    { abbr: "adamhardsuit", id: "IbQ0xED2hHufWyGy" },
+    { abbr: "ferrofhardsuit", id: "oW5zBg9C7paBNFe1" },
+    { abbr: "starshardsuit", id: "vBFbmg9a7zbJYWsH" },
+    { abbr: "carbhardsuit", id: "iHW7OEaUrXktC4X7" },
 
-    {abbr: "flightj", id: "J7sVKiOYpdn9c3rm"},
-    {abbr: "nanofib", id: "l1ea4QsZZEWx92Pi"},
-    {abbr: "tacticnanofib", id: "eqSokZJEMVwzxN1s"},
+    { abbr: "flightj", id: "J7sVKiOYpdn9c3rm" },
+    { abbr: "nanofib", id: "l1ea4QsZZEWx92Pi" },
+    { abbr: "tacticnanofib", id: "eqSokZJEMVwzxN1s" },
 
-    {abbr: "carbonic", id: "EGxcTfwKjIjTpYa2"},
-    {abbr: "environ", id: "A7XNrIpJVgrY28qh"},
-    {abbr: "hexaplate", id: "5toryXnQ13hJCHXW"},
-    {abbr: "monoplate", id: "F2aDPGS9fjTEWm81"},
-    {abbr: "triplate", id: "2F4PFxIKq1pCXswS"},
+    { abbr: "carbonic", id: "EGxcTfwKjIjTpYa2" },
+    { abbr: "environ", id: "A7XNrIpJVgrY28qh" },
+    { abbr: "hexaplate", id: "5toryXnQ13hJCHXW" },
+    { abbr: "monoplate", id: "F2aDPGS9fjTEWm81" },
+    { abbr: "triplate", id: "2F4PFxIKq1pCXswS" },
   ]
 
   armors.forEach(armor => {
     CONFIG.DND5E.armorIds[armor.abbr] = `sinantrarion-dark-matter.dark-matter-weapons-and-armors.${armor.id}`;
   });
+
+  var graftsEquipment = {
+    internalGraft: "Internal Graft",
+    externalGraft: "External Graft",
+    headGraft: "Head Graft",
+    armsGraft: "Arms Graft",
+    legsGraft: "Legs Graft"
+  }
+  for (const [armor, name] of Object.entries(graftsEquipment)) {
+    CONFIG.DND5E.equipmentTypes[armor] = name;
+    CONFIG.DND5E.armorProficienciesMap[armor] = true;
+  }
+
+  var clothingArmor = {
+    clothhat: "Clothings Helmet",
+    clothpants: "Clothings Pants",
+    clothhands: "Clothings Gloves",
+    clothboots: "Clothings Boots"
+  }
+
+  for (const [armor, name] of Object.entries(clothingArmor)) {
+    CONFIG.DND5E.equipmentTypes[armor] = name;
+    CONFIG.DND5E.armorProficienciesMap[armor] = true;
+  }
+
+  var lightArmor = {
+    lighthat: "Light Helmet",
+    lightpants: "Light Pants",
+    lighthands: "Light Gloves",
+    lightboots: "Light Boots"
+  }
+
+  for (const [armor, name] of Object.entries(lightArmor)) {
+    CONFIG.DND5E.equipmentTypes[armor] = name;
+    CONFIG.DND5E.armorProficienciesMap[armor] = 'lgt';
+  }
+
+  var mediumArmor = {
+    mediumhat: "Medium Helmet",
+    mediumpants: "Medium Pants",
+    mediumhands: "Medium Gloves",
+    mediumboots: "Medium Boots"
+  }
+
+  for (const [armor, name] of Object.entries(mediumArmor)) {
+    CONFIG.DND5E.equipmentTypes[armor] = name;
+    CONFIG.DND5E.armorProficienciesMap[armor] = 'med';
+  }
+
+  var heavyArmor = {
+    heavyhat: "Heavy Helmet",
+    heavypants: "Heavy Pants",
+    heavyhands: "Heavy Gloves",
+    heavyboots: "Heavy Boots"
+  }
+
+  for (const [armor, name] of Object.entries(heavyArmor)) {
+    CONFIG.DND5E.equipmentTypes[armor] = name;
+    CONFIG.DND5E.armorProficienciesMap[armor] = 'hvy';
+  }
 }
 
 function SetupLanguages() {
@@ -190,9 +252,9 @@ function SetupLanguages() {
 
 function SetupTools() {
   var tools = [
-    {abbr: "circuitrykit", id: "PWOvhnCGqrXoGwSa"},
-    {abbr: "mechanisttools", id: "TFrrRLUihsfSLJRH"},
-    {abbr: "shipmaintools", id: "yK9uBD7bD58oIduu"}
+    { abbr: "circuitrykit", id: "PWOvhnCGqrXoGwSa" },
+    { abbr: "mechanisttools", id: "TFrrRLUihsfSLJRH" },
+    { abbr: "shipmaintools", id: "yK9uBD7bD58oIduu" }
   ]
 
   tools.forEach(tool => {
@@ -202,6 +264,14 @@ function SetupTools() {
 
 function SetupExtra() {
   CONFIG.DND5E.featureTypes.class.subtypes["gadget"] = "Gadget";
+
+  CONFIG.DND5E.consumableTypes['explosive'] = {
+    label: "Explosive"
+  };
+}
+
+function SetupRuleReferences() {
+  CONFIG.DND5E.rules['roachaddiction'] = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.HuIZ87ix7oNPhRFL.JournalEntryPage.KUIc29kBU4QI4BJS`;
 }
 
 function setupDaeFields() {
@@ -234,3 +304,64 @@ function setupDaeFields() {
 
   }
 }
+
+Hooks.on("renderItemSheet5e", (app, html, data) => {
+  if (data.item.type != 'equipment') return;
+  var toAddArray = [
+    {
+      label: "Helmet",
+      values: {
+        clothhat: "Clothings Helmet",
+        lighthat: "Light Helmet",
+        mediumhat: "Medium Helmet",
+        heavyhat: "Heavy Helmet",
+      }
+    },
+    {
+      label: "Gloves",
+      values: {
+        clothhands: "Clothings Gloves",
+        lighthands: "Light Gloves",
+        mediumhands: "Medium Gloves",
+        heavyhands: "Heavy Gloves",
+      }
+    },
+    {
+      label: "Pants",
+      values: {
+        clothpants: "Clothings Pants",
+        lightpants: "Light Pants",
+        mediumpants: "Medium Pants",
+        heavypants: "Heavy Pants",
+      }
+    },
+    {
+      label: "Boots",
+      values: {
+        clothboots: "Clothings Boots",
+        lightboots: "Light Boots",
+        mediumboots: "Medium Boots",
+        heavyboots: "Heavy Boots",
+      }
+    },
+    {
+      label: "Grafts",
+      values: {
+        internalGraft: "Internal Graft",
+        externalGraft: "External Graft",
+        headGraft: "Head Graft",
+        armsGraft: "Arms Graft",
+        legsGraft: "Legs Graft"
+      }
+    },
+  ]
+
+  var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
+  toAddArray.forEach(element => {
+    let choices = $(`<optgroup label="${element.label}"></optgroup>`);
+    for (const [armor, name] of Object.entries(element.values)) {
+      choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
+    }
+    choiseList.append(choices);
+  });
+});

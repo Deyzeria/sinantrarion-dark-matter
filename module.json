@@ -27,7 +27,7 @@
   "packs": [
     {
       "name": "dark-matter-weapons-and-armors",
-      "label": "Dark Matter Weapons and Armors",
+      "label": "Dark Matter Mundane Items",
       "path": "packs/dark-matter-weapons-and-armors",
       "type": "Item",
       "ownership": {
