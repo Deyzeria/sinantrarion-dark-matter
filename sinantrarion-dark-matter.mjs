@@ -2,31 +2,69 @@ const cusSkills = [{
   abbr: "dat",
   label: "Data",
   ability: "int",
-  fullKey: "data"
+  fullKey: "data",
+  icon: "icons/commodities/tech/blueprint.webp"
 }, 
 {
   abbr: "pil",
   label: "Piloting",
   ability: "dex",
-  fullKey: "piloting"
+  fullKey: "piloting",
+  icon: "icons/commodities/tech/wheel.webp"
 },
 {
   abbr: "tec",
   label: "Technology",
   ability: "int",
-  fullKey: "technology"
+  fullKey: "technology",
+  icon: "icons/commodities/tech/detonator-timer.webp"
 }];
 
+const cusDescriptions = {
+  ath: "q9dXYw0gErhcsrys",
+
+  acr: "iBvdi6V5kQLkKeUw",
+  pil: "rgzLFXEGoELlJkqu",
+  slt: "J1MqfzKnCkPBAhgZ",
+  ste: "BKXr6FxTq5wSGibF",
+
+  arc: "7yoQ8aqoW3p1mR6O",
+  dat: "fMVIzXy6n9JJLFx3",
+  his: "4e14APjBSebwe9UT",
+  inv: "Ll07Fq4B3jeQzDlC",
+  nat: "sZ5qJDnSF24WMg6K",
+  rel: "UhncrpiH5I7dBZ8f",
+  tec: "kWMg22wxjStGAe7I",
+
+  ani: "MhsM9OhjQof0Zc6w",
+  ins: "rz1K4FcSMuVKEXuf",
+  med: "H3M1vmnXO1mYw9ty",
+  prc: "cjoIMRUpPpHPh8j3",
+  sur: "0VOTTHDV2VC2aO8N",
+
+  dec: "ma7lsmdnwz56Hlcs",
+  itm: "KqpMxgwaRxMLARls",
+  prf: "2DRilY9kduhld9i0",
+  per: "ShztnScIEBUNfGFQ"
+}
+
 Hooks.once("init", () => {
+
+  CONFIG.DND5E.sourceBooks["Dark Matter"] = "Dark Matter by Mage Hand Press";
 
   // Custom skills
   cusSkills.forEach(skl => {
     CONFIG.DND5E.skills[skl.abbr] = {
       label: skl.label,
       ability: skl.ability,
-      fullKey: skl.fullKey
+      fullKey: skl.fullKey,
+      icon: skl.icon
     }
   });
+
+  for (const [skill, reference] of Object.entries(cusDescriptions)) {
+    CONFIG.DND5E.skills[skill].reference = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.noWYYgAueBNYseRQ.JournalEntryPage.${reference}`;
+  }
 
   SetupWeapons();
   SetupArmors();
@@ -50,17 +88,26 @@ function SetupWeapons() {
   CONFIG.DND5E.weaponTypes["simpleB"] = "Simple Blasters";
   CONFIG.DND5E.weaponTypes["martialB"] = "Martial Blasters";
 
-  CONFIG.DND5E.weaponProperties["automatic"] = "Automatic";
-  CONFIG.DND5E.weaponProperties["blaster"] = "Blaster";
-  CONFIG.DND5E.weaponProperties["explosive"] = "Explosive";
-  CONFIG.DND5E.weaponProperties["foregrip"] = "Foregrip";
-  CONFIG.DND5E.weaponProperties["fist"] = "Fist";
-  CONFIG.DND5E.weaponProperties["heat"] = "Heat";
-  CONFIG.DND5E.weaponProperties["nonlethal"] = "Nonlethal";
-  CONFIG.DND5E.weaponProperties["overheat"] = "Overheat";
-  CONFIG.DND5E.weaponProperties["scatter"] = "Scatter";
-  CONFIG.DND5E.weaponProperties["sighted"] = "Sighted";
-  CONFIG.DND5E.weaponProperties["mounted"] = "Mounted";
+  var weaponProp = {
+    automatic: "Automatic",
+    blaster: "Blaster",
+    explosive: "Explosive",
+    foregrip: "Foregrip",
+    fist: "Fist",
+    heat: "Heat",
+    nonlethal: "Nonlethal",
+    overheat: "Overheat",
+    scatter: "Scatter",
+    sighted: "Sighted",
+    mounted: "Mounted"
+  }
+
+  for (const [key, name] of Object.entries(weaponProp)) {
+    CONFIG.DND5E.itemProperties[key] = {
+      label: name
+    }
+    CONFIG.DND5E.validProperties.weapon.add(key);
+  }
 
   var weapons = [
     {abbr: "sunstaff", id: "P0zs0GGWKJ0v1K3O"},
