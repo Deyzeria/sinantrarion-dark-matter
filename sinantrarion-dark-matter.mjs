@@ -20,6 +20,20 @@ const cusSkills = [{
   icon: "icons/commodities/tech/detonator-timer.webp"
 }];
 
+const weaponManufacturers = {
+  "": "",
+  classicatlas: "Classic Atlas",
+  modernatlas: "Modern Atlas",
+  bandit: "Bandit",
+  dahl: "Dahl",
+  hyperion: "Hyperion",
+  jakobs: "Jakobs",
+  maliwan: "Maliwan",
+  tediore: "Tediore",
+  torgue: "TORGUE",
+  vladof: "Vladof"
+}
+
 const cusDescriptions = {
   ath: "q9dXYw0gErhcsrys",
 
@@ -93,6 +107,7 @@ function SetupWeapons() {
   var weaponProp = {
     automatic: "Automatic",
     blaster: "Blaster",
+    branded: "Branded",
     explosive: "Explosive",
     foregrip: "Foregrip",
     fist: "Fist",
@@ -299,69 +314,101 @@ function setupDaeFields() {
     };
     initDAE().then(value => {
       if (!value)
-        console.error(`farmlands-and-cows | initDae settings failed`);
+        console.error(`dark-matter | initDae settings failed`);
     });
 
   }
 }
 
 Hooks.on("renderItemSheet5e", (app, html, data) => {
-  if (data.item.type != 'equipment') return;
-  var toAddArray = [
-    {
-      label: "Helmet",
-      values: {
-        clothhat: "Clothings Helmet",
-        lighthat: "Light Helmet",
-        mediumhat: "Medium Helmet",
-        heavyhat: "Heavy Helmet",
-      }
-    },
-    {
-      label: "Gloves",
-      values: {
-        clothhands: "Clothings Gloves",
-        lighthands: "Light Gloves",
-        mediumhands: "Medium Gloves",
-        heavyhands: "Heavy Gloves",
-      }
-    },
-    {
-      label: "Pants",
-      values: {
-        clothpants: "Clothings Pants",
-        lightpants: "Light Pants",
-        mediumpants: "Medium Pants",
-        heavypants: "Heavy Pants",
-      }
-    },
-    {
-      label: "Boots",
-      values: {
-        clothboots: "Clothings Boots",
-        lightboots: "Light Boots",
-        mediumboots: "Medium Boots",
-        heavyboots: "Heavy Boots",
-      }
-    },
-    {
-      label: "Grafts",
-      values: {
-        internalGraft: "Internal Graft",
-        externalGraft: "External Graft",
-        headGraft: "Head Graft",
-        armsGraft: "Arms Graft",
-        legsGraft: "Legs Graft"
-      }
-    },
-  ]
+  if (data.item.type == 'equipment') {
+    var toAddArray = [
+      {
+        label: "Helmet",
+        values: {
+          clothhat: "Clothings Helmet",
+          lighthat: "Light Helmet",
+          mediumhat: "Medium Helmet",
+          heavyhat: "Heavy Helmet",
+        }
+      },
+      {
+        label: "Gloves",
+        values: {
+          clothhands: "Clothings Gloves",
+          lighthands: "Light Gloves",
+          mediumhands: "Medium Gloves",
+          heavyhands: "Heavy Gloves",
+        }
+      },
+      {
+        label: "Pants",
+        values: {
+          clothpants: "Clothings Pants",
+          lightpants: "Light Pants",
+          mediumpants: "Medium Pants",
+          heavypants: "Heavy Pants",
+        }
+      },
+      {
+        label: "Boots",
+        values: {
+          clothboots: "Clothings Boots",
+          lightboots: "Light Boots",
+          mediumboots: "Medium Boots",
+          heavyboots: "Heavy Boots",
+        }
+      },
+      {
+        label: "Grafts",
+        values: {
+          internalGraft: "Internal Graft",
+          externalGraft: "External Graft",
+          headGraft: "Head Graft",
+          armsGraft: "Arms Graft",
+          legsGraft: "Legs Graft"
+        }
+      },
+    ]
 
-  var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
-  toAddArray.forEach(element => {
-    let choices = $(`<optgroup label="${element.label}"></optgroup>`);
-    for (const [armor, name] of Object.entries(element.values)) {
-      choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
+    var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
+    toAddArray.forEach(element => {
+      let choices = $(`<optgroup label="${element.label}"></optgroup>`);
+      for (const [armor, name] of Object.entries(element.values)) {
+        choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
+      }
+      choiseList.append(choices);
+    });
+  }
+  else if (data.item.type == 'weapon' && data.item.system.properties.has('branded')) {
+    var headerDetails = html.find(".header-details").find(".summary").children().eq(1);
+    let markChoice = $(`<select name="flags.darkmatter.mark"></select>`);
+
+    for (const [key, name] of Object.entries(weaponManufacturers)) {
+      markChoice.append(`<option value="${key}" ${data.item.flags.darkmatter?.mark == key ? 'selected' : ''}>${name}</option>`);
     }
-    choiseList.append(choices);
-  });
+
+    let liMarkChoice = $(`<li></li>`).append(markChoice);
+    headerDetails.after(liMarkChoice);
+  }
+});
+
+Hooks.on("renderActorSheet5eCharacter2", (app, html, data) => {
+  let totalList = html.find(".inventory-list").find('.item-list [data-grouped="weapon"]');
+
+  for (const [key, value] of Object.entries(totalList)) {
+    if (!isNaN(key)) {
+      let foundItem = data.items.find(x => x.id == $(value)[0].dataset.itemId);
+      if (foundItem.system.properties.has('branded') && foundItem.flags.darkmatter?.mark) {
+        let manufacturer = $(`<span class="title" style="font-size: var(--font-size-11);"><i class="fa-solid fa-copyright"></i> ${weaponManufacturers[foundItem.flags.darkmatter.mark]}</span>`);
+        $(value).find('.title').after(manufacturer);
+      }
+    }
+  }
+});
+
+Hooks.on("renderTraitSelector", (app, html, data) => {
+  if(data.customPath != "system.traits.weaponProf.custom") return;
+  html.css("width", `${Object.keys(data.choices).length*130}px`);
+  html.find(".trait-list").first().addClass("flexrow");
 });
