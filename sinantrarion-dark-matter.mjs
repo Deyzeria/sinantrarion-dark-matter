@@ -22,16 +22,16 @@ const cusSkills = [{
 
 const weaponManufacturers = {
   "": "",
-  classicatlas: "Classic Atlas",
-  modernatlas: "Modern Atlas",
-  bandit: "Bandit",
-  dahl: "Dahl",
+  nitronix: "Nitronix",
+  scav: "Scav",
+  son: "Sisters of Nebula",
+  velocity: "Velocity",
   hyperion: "Hyperion",
-  jakobs: "Jakobs",
-  maliwan: "Maliwan",
-  tediore: "Tediore",
-  torgue: "TORGUE",
-  vladof: "Vladof"
+  havoc: "Havoc",
+  arcanixium: "Arcanixium",
+  centurion: "Centurion",
+  pyrotorg: "PYROTORG",
+  marauder: "Marauder"
 }
 
 const cusDescriptions = {
@@ -283,6 +283,19 @@ function SetupExtra() {
   CONFIG.DND5E.consumableTypes['explosive'] = {
     label: "Explosive"
   };
+  
+  delete CONFIG.DND5E.currencies.ep;
+  CONFIG.DND5E.currencies.pp.label = "Platinum Credits";
+  CONFIG.DND5E.currencies.pp.abbreviation = "PC";
+
+  CONFIG.DND5E.currencies.gp.label = "Gold Credits";
+  CONFIG.DND5E.currencies.gp.abbreviation = "GC";
+
+  CONFIG.DND5E.currencies.sp.label = "Silver Credits";
+  CONFIG.DND5E.currencies.sp.abbreviation = "SC";
+
+  CONFIG.DND5E.currencies.cp.label = "Copper Credits";
+  CONFIG.DND5E.currencies.cp.abbreviation = "CC";
 }
 
 function SetupRuleReferences() {

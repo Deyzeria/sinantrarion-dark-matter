@@ -27,9 +27,10 @@
   "packs": [
     {
       "name": "dark-matter-weapons-and-armors",
-      "label": "Dark Matter Mundane Items",
+      "label": "DM Mundane Items",
       "path": "packs/dark-matter-weapons-and-armors",
       "type": "Item",
+      "banner": "modules/sinantrarion-dark-matter/pack-images/weapons.png",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -39,9 +40,10 @@
     },
     {
       "name": "dark-matter-classes-and-subclasses",
-      "label": "Dark Matter Classes and Subclasses",
+      "label": "DM Classes and Subclasses",
       "path": "packs/dark-matter-classes-and-subclasses",
       "type": "Item",
+      "banner": "modules/sinantrarion-dark-matter/pack-images/classes.png",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -51,7 +53,7 @@
     },
     {
       "name": "dark-matter-races",
-      "label": "Dark Matter Races",
+      "label": "DM Races",
       "path": "packs/dark-matter-races",
       "type": "Item",
       "ownership": {
@@ -63,7 +65,7 @@
     },
     {
       "name": "dark-matter-feats",
-      "label": "Dark Matter Feats",
+      "label": "DM Feats",
       "path": "packs/dark-matter-feats",
       "type": "Item",
       "ownership": {
@@ -75,9 +77,10 @@
     },
     {
       "name": "dark-matter-backgrounds",
-      "label": "Dark Matter Backgrounds",
+      "label": "DM Backgrounds",
       "path": "packs/dark-matter-backgrounds",
       "type": "Item",
+      "banner": "modules/sinantrarion-dark-matter/pack-images/background.png",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -87,9 +90,10 @@
     },
     {
       "name": "dark-matter-grafts",
-      "label": "Dark Matter Grafts",
+      "label": "DM Grafts",
       "path": "packs/dark-matter-grafts",
       "type": "Item",
+      "banner": "modules/sinantrarion-dark-matter/pack-images/grafts.png",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -99,7 +103,7 @@
     },
     {
       "name": "dark-matter-magic-items",
-      "label": "Dark Matter Magic Items",
+      "label": "DM Magic Items",
       "path": "packs/dark-matter-magic-items",
       "type": "Item",
       "ownership": {
@@ -111,7 +115,7 @@
     },
     {
       "name": "dark-matter-ship-parts",
-      "label": "Dark Matter Ship Parts",
+      "label": "DM Ship Parts",
       "path": "packs/dark-matter-ship-parts",
       "type": "Item",
       "ownership": {
@@ -123,7 +127,7 @@
     },
     {
       "name": "dark-matter-ship-premades",
-      "label": "Dark Matter Ship Premades",
+      "label": "DM Ship Premades",
       "path": "packs/dark-matter-ship-premades",
       "type": "Actor",
       "ownership": {
@@ -135,7 +139,7 @@
     },
     {
       "name": "dark-matter-characters",
-      "label": "Dark Matter Characters",
+      "label": "DM Characters",
       "path": "packs/dark-matter-characters",
       "type": "Actor",
       "ownership": {
@@ -147,9 +151,10 @@
     },
     {
       "name": "dark-matter-spells",
-      "label": "Dark Matter Spells",
+      "label": "DM Spells",
       "path": "packs/dark-matter-spells",
       "type": "Item",
+      "banner": "modules/sinantrarion-dark-matter/pack-images/magic.png",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -159,7 +164,7 @@
     },
     {
       "name": "dark-matter-journals",
-      "label": "Dark Matter Journals",
+      "label": "DM Journals",
       "path": "packs/dark-matter-journals",
       "type": "JournalEntry",
       "ownership": {
@@ -171,7 +176,7 @@
     },
     {
       "name": "dark-matter-rolltables",
-      "label": "Dark Matter Rolltables",
+      "label": "DM Rolltables",
       "path": "packs/dark-matter-rolltables",
       "type": "RollTable",
       "ownership": {
