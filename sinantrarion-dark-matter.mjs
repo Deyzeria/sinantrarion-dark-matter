@@ -34,6 +34,14 @@ const weaponManufacturers = {
   marauder: "Marauder"
 }
 
+const positionObject = {
+  "": "",
+  front: "Front Position",
+  left: "Left Position",
+  right: "Right Position",
+  back: "Rear Position"
+};
+
 const cusDescriptions = {
   ath: "q9dXYw0gErhcsrys",
 
@@ -76,6 +84,8 @@ Hooks.once("init", () => {
     }
   });
 
+  CONFIG.DND5E.featureTypes['ship'] = {label: 'Ship Feature'}
+
   for (const [skill, reference] of Object.entries(cusDescriptions)) {
     CONFIG.DND5E.skills[skill].reference = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.noWYYgAueBNYseRQ.JournalEntryPage.${reference}`;
   }
@@ -92,6 +102,7 @@ Hooks.once("init", () => {
 
 Hooks.once("setup", () => {
   setupDaeFields();
+  SetupSizes();
 });
 
 function SetupWeapons() {
@@ -101,13 +112,15 @@ function SetupWeapons() {
   CONFIG.DND5E.weaponProficienciesMap["simpleB"] = "simb";
   CONFIG.DND5E.weaponProficienciesMap["martialB"] = "marb";
 
+  CONFIG.DND5E.weaponTypes["ship"] = "Ship Weapon";
+
   CONFIG.DND5E.weaponTypes["simpleB"] = "Simple Blasters";
   CONFIG.DND5E.weaponTypes["martialB"] = "Martial Blasters";
 
   var weaponProp = {
     automatic: "Automatic",
     blaster: "Blaster",
-    branded: "Branded",
+    branded: "© Branded",
     explosive: "Explosive",
     foregrip: "Foregrip",
     fist: "Fist",
@@ -116,7 +129,9 @@ function SetupWeapons() {
     overheat: "Overheat",
     scatter: "Scatter",
     sighted: "Sighted",
-    mounted: "Mounted"
+    mounted: "Mounted",
+    deployable: "🚀 Deployable",
+    fixed: "🚀 Fixed"
   }
 
   for (const [key, name] of Object.entries(weaponProp)) {
@@ -167,6 +182,17 @@ function SetupWeapons() {
   weapons.forEach(weapon => {
     CONFIG.DND5E.weaponIds[weapon.abbr] = `sinantrarion-dark-matter.dark-matter-weapons-and-armors.${weapon.id}`;
   });
+
+  var ammunition = [
+    { abbr: "mine", id: "sFgGeoFjfZ6sIjIV" },
+    { abbr: "lightcannon", id: "K6yaF1trISjC9VTG" },
+    { abbr: "heavycannon", id: "K6yaF1trISjC9VTG" },
+    { abbr: "torpedo", id: "rgiE2mf9BfenWwmz" }
+  ];
+
+  ammunition.forEach(ammo => {
+    CONFIG.DND5E.ammoIds[ammo.abbr] = `Compendium.sinantrarion-dark-matter.dark-matter-ship-parts.Item.${ammo.id}`;
+  })
 }
 
 function SetupArmors() {
@@ -192,6 +218,9 @@ function SetupArmors() {
   armors.forEach(armor => {
     CONFIG.DND5E.armorIds[armor.abbr] = `sinantrarion-dark-matter.dark-matter-weapons-and-armors.${armor.id}`;
   });
+
+  CONFIG.DND5E.miscEquipmentTypes['upgrade'] = "Vehicle Upgrade";
+  CONFIG.DND5E.equipmentTypes['upgrade'] = "Vehicle Upgrade";
 
   var graftsEquipment = {
     internalGraft: "Internal Graft",
@@ -283,7 +312,7 @@ function SetupExtra() {
   CONFIG.DND5E.consumableTypes['explosive'] = {
     label: "Explosive"
   };
-  
+
   delete CONFIG.DND5E.currencies.ep;
   CONFIG.DND5E.currencies.pp.label = "Platinum Credits";
   CONFIG.DND5E.currencies.pp.abbreviation = "PC";
@@ -296,6 +325,72 @@ function SetupExtra() {
 
   CONFIG.DND5E.currencies.cp.label = "Copper Credits";
   CONFIG.DND5E.currencies.cp.abbreviation = "CC";
+
+  CONFIG.DND5E.movementTypes['impulse'] = "Impulse";
+
+  CONFIG.DND5E.creatureTypes['ship'] = {
+    label: "🚀Ship",
+    plural: "🚀Ships",
+    icon: "https://assets.forge-vtt.com/624028a5d2754efb9c0c6799/ItemIcons/Environment/Spaceship/Tech_battleships.png",
+    reference: ""
+  }
+}
+
+function SetupSizes() {
+  CONFIG.DND5E.actorSizes['fighter'] = {
+    label: "🚀Fighter",
+    abbreviation: "fr",
+    token: 0.3,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['personal'] = {
+    label: "🚀Personal",
+    abbreviation: "pl",
+    token: 0.5,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['transport'] = {
+    label: "🚀Transport",
+    abbreviation: "tr",
+    token: 1,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['corvette'] = {
+    label: "🚀Corvette",
+    abbreviation: "ce",
+    token: 2,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['frigate'] = {
+    label: "🚀Frigate",
+    abbreviation: "fe",
+    token: 3,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['lightcruiser'] = {
+    label: "🚀Light Cruiser",
+    abbreviation: "lc",
+    token: 4,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['heavycruiser'] = {
+    label: "🚀Heavy Cruiser",
+    abbreviation: "hc",
+    token: 5,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['capital'] = {
+    label: "🚀Capital",
+    abbreviation: "cl",
+    token: 8,
+    capacityMultiplier: 1
+  };
+  CONFIG.DND5E.actorSizes['titan'] = {
+    label: "🚀Titan",
+    abbreviation: "tn",
+    token: 10,
+    capacityMultiplier: 1
+  };
 }
 
 function SetupRuleReferences() {
@@ -393,16 +488,31 @@ Hooks.on("renderItemSheet5e", (app, html, data) => {
       choiseList.append(choices);
     });
   }
-  else if (data.item.type == 'weapon' && data.item.system.properties.has('branded')) {
-    var headerDetails = html.find(".header-details").find(".summary").children().eq(1);
-    let markChoice = $(`<select name="flags.darkmatter.mark"></select>`);
-
-    for (const [key, name] of Object.entries(weaponManufacturers)) {
-      markChoice.append(`<option value="${key}" ${data.item.flags.darkmatter?.mark == key ? 'selected' : ''}>${name}</option>`);
+  else if (data.item.type == 'weapon') {
+    if (data.item.system.properties.has('branded'))
+    {
+      var headerDetails = html.find(".header-details").find(".summary").children().eq(1);
+      let markChoice = $(`<select name="flags.darkmatter.mark"></select>`);
+  
+      for (const [key, name] of Object.entries(weaponManufacturers)) {
+        markChoice.append(`<option value="${key}" ${data.item.flags.darkmatter?.mark == key ? 'selected' : ''}>${name}</option>`);
+      }
+  
+      let liMarkChoice = $(`<li></li>`).append(markChoice);
+      headerDetails.after(liMarkChoice);
+  
     }
+    if (data.item.system.properties.has('fixed'))
+    {
+      var headerDetails = html.find(".details").children().eq(2);
+      let fixedPosition = $(`<select name="flags.darkmatter.position"></select>`);
 
-    let liMarkChoice = $(`<li></li>`).append(markChoice);
-    headerDetails.after(liMarkChoice);
+      for (const [key, name] of Object.entries(positionObject)) {
+        fixedPosition.append(`<option value="${key}" ${data.item.flags.darkmatter?.position == key ? 'selected' : ''}>${name}</option>`);
+      }
+      let divPositionObject = $(`<div class=form-group></div>`).append(`<label>Fixed Position</label>`).append(fixedPosition);
+      headerDetails.after(divPositionObject);
+    }
   }
 });
 
@@ -421,7 +531,66 @@ Hooks.on("renderActorSheet5eCharacter2", (app, html, data) => {
 });
 
 Hooks.on("renderTraitSelector", (app, html, data) => {
-  if(data.customPath != "system.traits.weaponProf.custom") return;
-  html.css("width", `${Object.keys(data.choices).length*130}px`);
+  if (data.customPath != "system.traits.weaponProf.custom") return;
+  html.css("width", `${Object.keys(data.choices).length * 130}px`);
   html.find(".trait-list").first().addClass("flexrow");
 });
+
+Hooks.on("renderActorSheet5eNPC", AddShieldsAndManeuvrability.bind(this));
+Hooks.on("renderActorSheet5eVehicle", AddShieldsAndManeuvrability.bind(this));
+
+function AddShieldsAndManeuvrability(app, html, data) {
+  if(data.system.details?.type?.value == 'ship' || data.system.vehicleType == "space")
+  {
+    data.actor.flags.shieldvalue ||= 0;
+    data.actor.flags.shieldmax ||= 0;
+    data.actor.flags.maneufrability ||= "";
+    
+    let shieldField = $(`<li class="attribute shield">
+      <h4 class="attribute-name box-title">Shield Points</h4>
+      <div class="attribute-value multiple">
+        <input name="flags.shieldvalue" type="text" data-dtype="Number" value="${data.actor.flags.shieldvalue}" placeholder="—" data-tooltip="Current Shield Points">
+        <span class="sep"> / </span>
+        <input name="flags.shieldmax" type="text" data-dtype="Number" value="${data.actor.flags.shieldmax}" placeholder="—" data-tooltip="Max Shield Points">
+      </div>
+    </li>`);
+  
+    html.find(".health").after(shieldField);
+  
+    // ------------------------------------- //
+
+    let maneuvrabilityField = $(`<span>
+      Maneuvrability:<input name="flags.maneufrability" style="width:30px" type="text" placeholder="—" value="${data.actor.flags.maneufrability}" data-tooltip="Maneuvrability in degrees">
+    </span>`)
+
+    html.find(".movement").find(".attribute-footer").children().eq(0).after(maneuvrabilityField);
+
+    // ------------------------------------- //
+    let attackList;
+    if(data.isNPC) {
+      let inventoryList = html.find(".inventory-list");
+      inventoryList.children().eq(0).children().eq(0).after(`<div class="item-detail" style="flex: 0 0 85px">Position</div>`);
+  
+      attackList = inventoryList.children().eq(1);
+    }
+
+    if(data.isVehicle) {
+      let inventoryList = html.find(".inventory-list");
+      inventoryList.children().eq(8).children().eq(0).after(`<div class="item-detail" style="flex: 0 0 85px">Position</div>`);
+  
+      attackList = inventoryList.children().eq(9);
+    }
+
+    for (const [key, value] of Object.entries(attackList.children())) {
+      if (!isNaN(key)) {
+        let foundItem = data.items.find(x => x.id == $(value)[0].dataset.itemId);
+        if (foundItem.system.properties.has('fixed') && foundItem.flags.darkmatter?.position) {
+          let manufacturer = $(`<span class="item-detail" style="flex: 0 0 85px">(${positionObject[foundItem.flags.darkmatter.position]})</span>`);
+          $(value).children().eq(0).after(manufacturer);
+        }
+      }
+    }  
+  }
+
+  // TODO: For NPC's, if Ship, if has any in inventory Ship Equpment, render its hitpoints pls
+}
