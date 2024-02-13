@@ -36,10 +36,10 @@ const weaponManufacturers = {
 
 const positionObject = {
   "": "",
-  front: "Front Position",
-  left: "Left Position",
-  right: "Right Position",
-  back: "Rear Position"
+  front: "Fixed Front",
+  left: "Fixed Left",
+  right: "Fixed Right",
+  back: "Fixed Rear"
 };
 
 const cusDescriptions = {
@@ -594,3 +594,17 @@ function AddShieldsAndManeuvrability(app, html, data) {
 
   // TODO: For NPC's, if Ship, if has any in inventory Ship Equpment, render its hitpoints pls
 }
+
+Hooks.once('tidy5e-sheet.ready', (api) => {
+  // api.config.actorTraits.registerActorTrait({
+  //   title: "Configure My Module",
+  //   iconClass: "fa-solid fa-spaghetti-monster-flying",
+  //   enabled: (params) =>
+  //     ["character", "npc"].includes(params.context.actor.type),
+  //   openConfiguration: (params) => {
+  //     // TODO: For example, open another form to input some data.
+  //     // https://kgar.github.io/foundry-vtt-tidy-5e-sheets/classes/ActorTraitsApi.html
+  //   },
+  //   openConfigurationTooltip: "Click to configure my module",
+  // });
+});
