@@ -176,6 +176,8 @@ function SetupReferences() {
   }
 
   CONFIG.DND5E.rules['roachaddiction'] = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.HuIZ87ix7oNPhRFL.JournalEntryPage.KUIc29kBU4QI4BJS`;
+
+  CONFIG.DND5E.rules['thermalsight'] = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.noWYYgAueBNYseRQ.JournalEntryPage.VrwByUw9b77BxVno`;
 }
 
 function setupDaeFields() {
