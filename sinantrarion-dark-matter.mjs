@@ -143,6 +143,8 @@ function SetupExtra() {
 
   CONFIG.DND5E.movementTypes['impulse'] = "Impulse";
 
+  CONFIG.DND5E.individualTargetTypes['spaceship'] = "Spaceship";
+
   CONFIG.DND5E.itemProperties['mega'] = {
     label: "Mega",
     abbreviation: "🌌"
