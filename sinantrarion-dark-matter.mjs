@@ -155,14 +155,14 @@ function SetupExtra() {
     abbreviation: "⌛"
   }
 
-  CONFIG.DND5E.itemProperties['renai'] = {
-    label: "Renaissance",
+  CONFIG.DND5E.itemProperties['military'] = {
+    label: "Military",
     abbreviation: "💣"
   }
 
   CONFIG.DND5E.validProperties.spell.add("mega");
   CONFIG.DND5E.validProperties.spell.add("chrono");
-  CONFIG.DND5E.validProperties.spell.add("renai");
+  CONFIG.DND5E.validProperties.spell.add("military");
 
   CONFIG.DND5E.creatureTypes['ship'] = {
     label: "🚀Ship",
