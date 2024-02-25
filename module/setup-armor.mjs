@@ -41,7 +41,11 @@ export function SetupArmors() {
     clothhat: "Clothings Helmet",
     clothpants: "Clothings Pants",
     clothhands: "Clothings Gloves",
-    clothboots: "Clothings Boots"
+    clothboots: "Clothings Boots",
+    ring: "Ring",
+    neck: "Necklace",
+    face: "Face",
+    back: "Back"
   }
 
   for (const [armor, name] of Object.entries(clothingArmor)) {
@@ -88,6 +92,15 @@ export function SetupArmors() {
 
 export function SetupArmorChoice(html, data) {
   var toAddArray = [
+    {
+      label: "Extra Slots",
+      values: {
+        ring: "Ring",
+        neck: "Necklace",
+        face: "Face",
+        back: "Back"
+      }
+    },
     {
       label: "Helmet",
       values: {

@@ -1,3 +1,5 @@
-2024/02/20-21:00:13.902 2df8 Recovering log #130
-2024/02/20-21:00:13.906 2df8 Delete type=0 #130
-2024/02/20-21:00:13.906 2df8 Delete type=3 #128
+2024/02/24-16:33:08.459 ba0 Recovering log #137
+2024/02/24-16:33:08.460 ba0 Level-0 table #139: started
+2024/02/24-16:33:08.467 ba0 Level-0 table #139: 239658 bytes OK
+2024/02/24-16:33:08.472 ba0 Delete type=0 #137
+2024/02/24-16:33:08.472 ba0 Delete type=3 #136

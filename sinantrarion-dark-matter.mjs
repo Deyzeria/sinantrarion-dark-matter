@@ -104,6 +104,8 @@ function SetupLanguages() {
   CONFIG.DND5E.languages.standard.children["skathari"] = "Skathári";
   CONFIG.DND5E.languages.standard.children["wrothian"] = "Wrothian";
 
+  CONFIG.DND5E.languages['machine'] = "Machine Code";
+
   delete CONFIG.DND5E.languages.exotic.children.aarakocra;
   delete CONFIG.DND5E.languages.exotic.children.gith;
   delete CONFIG.DND5E.languages.exotic.children.gnoll;
@@ -178,6 +180,7 @@ function SetupReferences() {
   }
 
   CONFIG.DND5E.rules['roachaddiction'] = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.HuIZ87ix7oNPhRFL.JournalEntryPage.KUIc29kBU4QI4BJS`;
+  CONFIG.DND5E.rules['vacuum'] = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.HuIZ87ix7oNPhRFL.JournalEntryPage.QMm7Rg2Nnhiv8GAH`;
 
   CONFIG.DND5E.rules['thermalsight'] = `Compendium.sinantrarion-dark-matter.dark-matter-journals.JournalEntry.noWYYgAueBNYseRQ.JournalEntryPage.VrwByUw9b77BxVno`;
 }
