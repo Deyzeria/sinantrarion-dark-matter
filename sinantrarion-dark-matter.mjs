@@ -216,16 +216,25 @@ function setupDaeFields() {
   }
 }
 
+Hooks.on('tidy5e-sheet.renderItemSheet', (app, html, data) => {
+  // if (data.item.type == 'equipment') {
+  //   armors.SetupArmorChoice($(html), data);
+  // }
+  if (data.item.type == 'weapon') {
+    weapons.SetupWeaponChoice($(html), data);
+  }
+});
+
 Hooks.on("renderItemSheet5e", (app, html, data) => {
   if (data.item.type == 'equipment') {
     armors.SetupArmorChoice(html, data);
   }
-  else if (data.item.type == 'weapon') {
-    weapons.SetupWeaponChoice(html, data);
-  }
+  // else if (data.item.type == 'weapon') {
+  //   weapons.SetupWeaponChoice(html, data);
+  // }
 });
 
-// Render weapon manufacturers on player character sheets
+// Render weapon manufacturers on player character sheets renderActorSheet5eCharacter
 Hooks.on("renderActorSheet5eCharacter2", (app, html, data) => {
   let totalList = html.find(".inventory-list").find('.item-list [data-grouped="weapon"]');
 
@@ -243,23 +252,25 @@ Hooks.on("renderActorSheet5eCharacter2", (app, html, data) => {
 // Render trait selection for weapons in several columns
 Hooks.on("renderTraitSelector", (app, html, data) => {
   if (data.customPath != "system.traits.weaponProf.custom") return;
-  html.css("width", `${Object.keys(data.choices).length * 130}px`);
+  html.css("width", `${Object.keys(data.choices).length * 140}px`);
   html.find(".trait-list").first().addClass("flexrow");
 });
 
 Hooks.on("renderActorSheet5eNPC", ships.AddShieldsAndManeuvrability.bind(this));
 Hooks.on("renderActorSheet5eVehicle", ships.AddShieldsAndManeuvrability.bind(this));
 
+// TIDY SHEETS UNIQUE
+
 Hooks.once('tidy5e-sheet.ready', (api) => {
-  // api.config.actorTraits.registerActorTrait({
-  //   title: "Configure My Module",
-  //   iconClass: "fa-solid fa-spaghetti-monster-flying",
-  //   enabled: (params) =>
-  //     ["character", "npc"].includes(params.context.actor.type),
-  //   openConfiguration: (params) => {
-  //     // TODO: For example, open another form to input some data.
-  //     // https://kgar.github.io/foundry-vtt-tidy-5e-sheets/classes/ActorTraitsApi.html
-  //   },
-  //   openConfigurationTooltip: "Click to configure my module",
-  // });
+  api.config.actorTraits.registerActorTrait({
+    title: "Configure Ship",
+    iconClass: "fa-solid fa-rocket",
+    enabled: (params) => 
+      (["vehicle"].includes(params.context.actor.type) && params.context.actor.system.vehicleType == "space") || (["npc"].includes(params.context.actor.type) && params.context.actor.system.details.type.value == 'ship'),
+    openConfiguration: (params) => {
+      // TODO: For example, open another form to input some data.
+      // https://kgar.github.io/foundry-vtt-tidy-5e-sheets/classes/ActorTraitsApi.html
+    },
+    openConfigurationTooltip: "Click to configure my module",
+  });
 });

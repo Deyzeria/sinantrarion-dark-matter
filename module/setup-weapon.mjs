@@ -1,6 +1,6 @@
 import { weaponManufacturers } from "../sinantrarion-dark-matter.mjs";
 
-const positionObject = {
+export const positionObject = {
   "": "",
   front: "Fixed Front",
   left: "Fixed Left",
@@ -99,6 +99,9 @@ export function SetupWeapons() {
 }
 
 export function SetupWeaponChoice(html, data) {
+  html.find(".brand-details")?.remove();
+  html.find(".fixed-details")?.remove();
+
   if (data.item.system.properties.has('branded')) {
     var headerDetails = html.find(".header-details").find(".summary").children().eq(1);
     let markChoice = $(`<select name="flags.darkmatter.mark"></select>`);
@@ -107,9 +110,8 @@ export function SetupWeaponChoice(html, data) {
       markChoice.append(`<option value="${key}" ${data.item.flags.darkmatter?.mark == key ? 'selected' : ''}>${name}</option>`);
     }
 
-    let liMarkChoice = $(`<li></li>`).append(markChoice);
+    let liMarkChoice = $(`<li class="brand-details"></li>`).append(markChoice);
     headerDetails.after(liMarkChoice);
-
   }
   if (data.item.system.properties.has('fixed')) {
     var headerDetails = html.find(".details").children().eq(2);
@@ -118,7 +120,7 @@ export function SetupWeaponChoice(html, data) {
     for (const [key, name] of Object.entries(positionObject)) {
       fixedPosition.append(`<option value="${key}" ${data.item.flags.darkmatter?.position == key ? 'selected' : ''}>${name}</option>`);
     }
-    let divPositionObject = $(`<div class=form-group></div>`).append(`<label>Fixed Position</label>`).append(fixedPosition);
+    let divPositionObject = $(`<div class="form-group fixed-details"></div>`).append(`<label>Fixed Position</label>`).append(fixedPosition);
     headerDetails.after(divPositionObject);
   }
 }
