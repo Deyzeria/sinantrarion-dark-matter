@@ -1,7 +1,7 @@
 {
-  "id": "sinantrarion-dark-matter",
-  "title": "Sinantrarion Dark Matter",
-  "version": "1.1.0",
+  "id": "deyzeria-dark-matter",
+  "title": "Deyzeria's Dark Matter",
+  "version": "2.0.0",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -19,8 +19,8 @@
   },
   "authors": [
     {
-      "name": "Sinantrarion",
-      "discord": "Sinantrarion",
+      "name": "Deyzeria",
+      "discord": "deyzeria",
       "flags": {}
     }
   ],
@@ -231,9 +231,9 @@
     }
   ],
   "esmodules": [
-    "/sinantrarion-dark-matter.mjs"
+    "/deyzeria-dark-matter.mjs"
   ],
-  "manifest": "https://raw.githubusercontent.com/Sinantrarion/sinantrarion-dark-matter/master/module.json",
-  "url": "https://github.com/Sinantrarion/sinantrarion-dark-matter",
-  "download": "https://github.com/Sinantrarion/sinantrarion-dark-matter/archive/refs/heads/main.zip"
+  "manifest": "https://raw.githubusercontent.com/Deyzeria/deyzeria-dark-matter/master/module.json",
+  "url": "https://github.com/Deyzeria/deyzeria-dark-matter",
+  "download": "https://github.com/Deyzeria/deyzeria-dark-matter/archive/refs/heads/main.zip"
 }
