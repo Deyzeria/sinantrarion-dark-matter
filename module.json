@@ -1,5 +1,5 @@
 {
-  "id": "deyzeria-dark-matter",
+  "id": "sinantrarion-dark-matter",
   "title": "Deyzeria's Dark Matter",
   "version": "2.0.0",
   "compatibility": {
@@ -233,7 +233,7 @@
   "esmodules": [
     "/deyzeria-dark-matter.mjs"
   ],
-  "manifest": "https://raw.githubusercontent.com/Deyzeria/deyzeria-dark-matter/master/module.json",
-  "url": "https://github.com/Deyzeria/deyzeria-dark-matter",
-  "download": "https://github.com/Deyzeria/deyzeria-dark-matter/archive/refs/heads/main.zip"
+  "manifest": "https://raw.githubusercontent.com/Deyzeria/sinantrarion-dark-matter/master/module.json",
+  "url": "https://github.com/Deyzeria/sinantrarion-dark-matter",
+  "download": "https://github.com/Deyzeria/sinantrarion-dark-matter/archive/refs/heads/main.zip"
 }

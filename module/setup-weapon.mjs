@@ -1,4 +1,4 @@
-import { weaponManufacturers } from "../sinantrarion-dark-matter.mjs";
+import { weaponManufacturers } from "../deyzeria-dark-matter.mjs";
 
 export const positionObject = {
   "": "",
