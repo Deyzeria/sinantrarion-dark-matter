@@ -125,7 +125,7 @@ export function SetupWeaponChoice(html, data) {
   }
 }
 
-export function AddWeaponBrandNameToCharacterSheet(actor, html, data) {
+export function AddWeaponBrandNameToCharacterSheetTidy(actor, html, data) {
   let weaponList = $(html).find(".inventory").find('div:contains("Weapons")');
 
   if (weaponList.length > 0) {

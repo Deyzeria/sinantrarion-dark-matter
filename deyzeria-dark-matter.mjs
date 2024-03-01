@@ -249,7 +249,7 @@ Hooks.on("renderActorSheet5eCharacter2", (app, html, data) => {
   }
 });
 
-Hooks.on("tidy5e-sheet.renderActorSheet", weapons.AddWeaponBrandNameToCharacterSheet.bind(this));
+Hooks.on("tidy5e-sheet.renderActorSheet", weapons.AddWeaponBrandNameToCharacterSheetTidy.bind(this));
 
 // Render trait selection for weapons in several columns
 Hooks.on("renderTraitSelector", (app, html, data) => {

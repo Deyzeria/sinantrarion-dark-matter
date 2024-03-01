@@ -147,14 +147,33 @@ export function SetupArmorChoice(html, data) {
         legsGraft: "Legs Graft"
       }
     },
-  ]
+  ];
 
-  var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
-  toAddArray.forEach(element => {
-    let choices = $(`<optgroup label="${element.label}"></optgroup>`);
-    for (const [armor, name] of Object.entries(element.values)) {
-      choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
-    }
-    choiseList.append(choices);
-  });
+  // Does not work
+  if (html.hasClass("tidy5e-sheet")) {
+    var choiseList = html.find(".details").find('[data-tidy-field="system.type.value"]');
+    
+    toAddArray.forEach(element => {
+      let alreadyHasOptgroup = html.find(`[label="${element.label}"]`);
+      if(alreadyHasOptgroup.length > 0) {
+        alreadyHasOptgroup.remove();
+      }
+
+      let choices = $(`<optgroup label="${element.label}"></optgroup>`);
+      for (const [armor, name] of Object.entries(element.values)) {
+        choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
+      }
+      choiseList.append(choices);
+    });
+  }
+  else {
+    var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
+    toAddArray.forEach(element => {
+      let choices = $(`<optgroup label="${element.label}"></optgroup>`);
+      for (const [armor, name] of Object.entries(element.values)) {
+        choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
+      }
+      choiseList.append(choices);
+    });
+  }
 }
