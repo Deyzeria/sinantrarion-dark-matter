@@ -91,75 +91,7 @@ export function SetupArmors() {
 }
 
 export function SetupArmorChoice(html, data) {
-  var toAddArray = [
-    {
-      label: "Extra Slots",
-      types: {
-        ring: "Ring",
-        neck: "Necklace",
-        face: "Face",
-        back: "Back"
-      }
-    },
-    {
-      label: "Helmet",
-      types: {
-        clothhat: "Clothings Helmet",
-        lighthat: "Light Helmet",
-        mediumhat: "Medium Helmet",
-        heavyhat: "Heavy Helmet",
-      }
-    },
-    {
-      label: "Gloves",
-      types: {
-        clothhands: "Clothings Gloves",
-        lighthands: "Light Gloves",
-        mediumhands: "Medium Gloves",
-        heavyhands: "Heavy Gloves",
-      }
-    },
-    {
-      label: "Pants",
-      types: {
-        clothpants: "Clothings Pants",
-        lightpants: "Light Pants",
-        mediumpants: "Medium Pants",
-        heavypants: "Heavy Pants",
-      }
-    },
-    {
-      label: "Boots",
-      types: {
-        clothboots: "Clothings Boots",
-        lightboots: "Light Boots",
-        mediumboots: "Medium Boots",
-        heavyboots: "Heavy Boots",
-      }
-    },
-    {
-      label: "Grafts",
-      types: {
-        internalGraft: "Internal Graft",
-        externalGraft: "External Graft",
-        headGraft: "Head Graft",
-        armsGraft: "Arms Graft",
-        legsGraft: "Legs Graft"
-      }
-    },
-  ];
-  // Does not work
-  if (html.hasClass("tidy5e-sheet")) {
-    var choiseList = html.find(".details").find('[data-tidy-field="system.type.value"]');
-    toAddArray.forEach(element => {
-      let choices = $(`<optgroup label="${element.label}"></optgroup>`);
-      for (const [armor, name] of Object.entries(element.types)) {
-        choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
-      }
-      choiseList.append(choices);
-    });
-  }
-  else {
+  if (!html.hasClass("tidy5e-sheet")) {
     var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
     toAddArray.forEach(element => {
       let choices = $(`<optgroup label="${element.label}"></optgroup>`);

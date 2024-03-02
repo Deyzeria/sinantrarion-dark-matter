@@ -217,9 +217,6 @@ function setupDaeFields() {
 }
 
 Hooks.on('tidy5e-sheet.renderItemSheet', (app, html, data, force) => {
-  // if (data.item.type == 'equipment' && force) {
-  //   armors.SetupArmorChoice($(html), data);
-  // }
   if (data.item.type == 'weapon') {
     weapons.SetupWeaponChoice($(html), data);
   }
@@ -277,4 +274,67 @@ Hooks.once('tidy5e-sheet.ready', (api) => {
     },
     openConfigurationTooltip: "Click to configure my module",
   });
+
+  var toAddArray = [
+    {
+      label: "Extra Slots",
+      types: {
+        ring: "Ring",
+        neck: "Necklace",
+        face: "Face",
+        back: "Back"
+      }
+    },
+    {
+      label: "Helmet",
+      types: {
+        clothhat: "Clothings Helmet",
+        lighthat: "Light Helmet",
+        mediumhat: "Medium Helmet",
+        heavyhat: "Heavy Helmet",
+      }
+    },
+    {
+      label: "Gloves",
+      types: {
+        clothhands: "Clothings Gloves",
+        lighthands: "Light Gloves",
+        mediumhands: "Medium Gloves",
+        heavyhands: "Heavy Gloves",
+      }
+    },
+    {
+      label: "Pants",
+      types: {
+        clothpants: "Clothings Pants",
+        lightpants: "Light Pants",
+        mediumpants: "Medium Pants",
+        heavypants: "Heavy Pants",
+      }
+    },
+    {
+      label: "Boots",
+      types: {
+        clothboots: "Clothings Boots",
+        lightboots: "Light Boots",
+        mediumboots: "Medium Boots",
+        heavyboots: "Heavy Boots",
+      }
+    },
+    {
+      label: "Grafts",
+      types: {
+        internalGraft: "Internal Graft",
+        externalGraft: "External Graft",
+        headGraft: "Head Graft",
+        armsGraft: "Arms Graft",
+        legsGraft: "Legs Graft"
+      }
+    },
+  ];
+
+  toAddArray.forEach((group) => {
+    api.config.item.registerCustomEquipmentTypeGroup(group);
+  });
+
 });

@@ -123,21 +123,17 @@ export function SetupWeaponChoice(html, data) {
   }
 }
 
+/**
+ * @param {Document} html 
+ */
 export function AddWeaponBrandNameToCharacterSheetTidy(actor, html, data) {
-  // FIXME: Fix to use new searching by types when is added
-  let weaponList = $(html).find(".inventory").find('div:contains("Weapons")');
-
-  if (weaponList.length > 0) {
-    weaponList = $(weaponList[1]).parent().parent().find(".item-table-body");
-
-    for (const [key, value] of Object.entries(weaponList.children())) {
-      if (!isNaN(key) && value.nodeName != "FOOTER") {
-        let foundItem = data.items.find(x => x.id == $(value)[0].dataset.itemId);
-        if (foundItem.system.properties.has('branded') && foundItem.flags.darkmatter?.mark) {
-          let manufacturer = $(`<span data-tidy-render-scheme="handlebars" style="flex: 0 0 85px; color: var(--t5e-tertiary-color);"><i class="fa-solid fa-copyright"></i> ${weaponManufacturers[foundItem.flags.darkmatter.mark]}</span>`);
-          $(value).find(".item-quantity").after(manufacturer);
-        }
-      }
+  let weaponList = html.querySelectorAll('[data-tidy-item-type="weapon"]');
+  for (let i = 0; i < weaponList.length; i++) {
+    const element = weaponList[i];
+    let foundItem = data.items.find(x => x.id == element.dataset.itemId);
+    if (foundItem.system.properties.has('branded') && foundItem.flags.darkmatter?.mark) {
+      let manufacturer = $(`<span data-tidy-render-scheme="handlebars" style="flex: 0 0 85px; color: var(--t5e-tertiary-color);"><i class="fa-solid fa-copyright"></i> ${weaponManufacturers[foundItem.flags.darkmatter.mark]}</span>`);
+      $(element).find(".item-quantity").after(manufacturer);
     }
   }
 }
