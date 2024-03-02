@@ -216,8 +216,8 @@ function setupDaeFields() {
   }
 }
 
-Hooks.on('tidy5e-sheet.renderItemSheet', (app, html, data) => {
-  // if (data.item.type == 'equipment') {
+Hooks.on('tidy5e-sheet.renderItemSheet', (app, html, data, force) => {
+  // if (data.item.type == 'equipment' && force) {
   //   armors.SetupArmorChoice($(html), data);
   // }
   if (data.item.type == 'weapon') {
@@ -258,8 +258,10 @@ Hooks.on("renderTraitSelector", (app, html, data) => {
   html.find(".trait-list").first().addClass("flexrow");
 });
 
-Hooks.on("renderActorSheet5eNPC", ships.AddShieldsAndManeuvrability.bind(this));
-Hooks.on("renderActorSheet5eVehicle", ships.AddShieldsAndManeuvrability.bind(this));
+// Hooks.on("renderActorSheet5eNPC", ships.AddShieldsAndManeuvrability.bind(this));
+// Hooks.on("renderActorSheet5eVehicle", ships.AddShieldsAndManeuvrability.bind(this));
+
+Hooks.on("tidy5e-sheet.renderActorSheet", ships.AddShieldsAndManeuvrability.bind(this));
 
 // TIDY SHEETS UNIQUE
 

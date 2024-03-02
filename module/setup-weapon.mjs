@@ -99,9 +99,6 @@ export function SetupWeapons() {
 }
 
 export function SetupWeaponChoice(html, data) {
-  html.find(".brand-details")?.remove();
-  html.find(".fixed-details")?.remove();
-
   if (data.item.system.properties.has('branded')) {
     var headerDetails = html.find(".header-details").find(".summary").children().eq(1);
     let markChoice = $(`<select name="flags.darkmatter.mark"></select>`);
@@ -110,9 +107,10 @@ export function SetupWeaponChoice(html, data) {
       markChoice.append(`<option value="${key}" ${data.item.flags.darkmatter?.mark == key ? 'selected' : ''}>${name}</option>`);
     }
 
-    let liMarkChoice = $(`<li class="brand-details"></li>`).append(markChoice);
+    let liMarkChoice = $(`<li data-tidy-render-scheme="handlebars" class="brand-details"></li>`).append(markChoice);
     headerDetails.after(liMarkChoice);
   }
+
   if (data.item.system.properties.has('fixed')) {
     var headerDetails = html.find(".details").children().eq(2);
     let fixedPosition = $(`<select name="flags.darkmatter.position"></select>`);
@@ -120,42 +118,24 @@ export function SetupWeaponChoice(html, data) {
     for (const [key, name] of Object.entries(positionObject)) {
       fixedPosition.append(`<option value="${key}" ${data.item.flags.darkmatter?.position == key ? 'selected' : ''}>${name}</option>`);
     }
-    let divPositionObject = $(`<div class="form-group fixed-details"></div>`).append(`<label>Fixed Position</label>`).append(fixedPosition);
+    let divPositionObject = $(`<div data-tidy-render-scheme="handlebars" class="form-group fixed-details"></div>`).append(`<label>Fixed Position</label>`).append(fixedPosition);
     headerDetails.after(divPositionObject);
   }
 }
 
 export function AddWeaponBrandNameToCharacterSheetTidy(actor, html, data) {
+  // FIXME: Fix to use new searching by types when is added
   let weaponList = $(html).find(".inventory").find('div:contains("Weapons")');
 
   if (weaponList.length > 0) {
-    weaponList = $(weaponList[1]).parent().parent().children().eq(1).children().eq(0);
+    weaponList = $(weaponList[1]).parent().parent().find(".item-table-body");
 
     for (const [key, value] of Object.entries(weaponList.children())) {
       if (!isNaN(key) && value.nodeName != "FOOTER") {
         let foundItem = data.items.find(x => x.id == $(value)[0].dataset.itemId);
         if (foundItem.system.properties.has('branded') && foundItem.flags.darkmatter?.mark) {
-
-          // Checking for if already has class and if it's changed
-          let alreadyHasBrand = $(value).find('.branded')
-          if (alreadyHasBrand.length > 0) {
-            if (alreadyHasBrand.hasClass(foundItem.flags.darkmatter.mark)) {
-              continue;
-            }
-            else {
-              alreadyHasBrand.remove();
-            }
-          }
-
-
-          let manufacturer = $(`<span class="branded ${foundItem.flags.darkmatter.mark}" style="flex: 0 0 85px; color: var(--t5e-tertiary-color);"><i class="fa-solid fa-copyright"></i> ${weaponManufacturers[foundItem.flags.darkmatter.mark]}</span>`);
+          let manufacturer = $(`<span data-tidy-render-scheme="handlebars" style="flex: 0 0 85px; color: var(--t5e-tertiary-color);"><i class="fa-solid fa-copyright"></i> ${weaponManufacturers[foundItem.flags.darkmatter.mark]}</span>`);
           $(value).find(".item-quantity").after(manufacturer);
-        }
-        else {
-          let alreadyHasBrand = $(value).find('.branded')
-          if (alreadyHasBrand.length > 0) {
-            alreadyHasBrand.remove();
-          }
         }
       }
     }

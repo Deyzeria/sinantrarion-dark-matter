@@ -94,7 +94,7 @@ export function SetupArmorChoice(html, data) {
   var toAddArray = [
     {
       label: "Extra Slots",
-      values: {
+      types: {
         ring: "Ring",
         neck: "Necklace",
         face: "Face",
@@ -103,7 +103,7 @@ export function SetupArmorChoice(html, data) {
     },
     {
       label: "Helmet",
-      values: {
+      types: {
         clothhat: "Clothings Helmet",
         lighthat: "Light Helmet",
         mediumhat: "Medium Helmet",
@@ -112,7 +112,7 @@ export function SetupArmorChoice(html, data) {
     },
     {
       label: "Gloves",
-      values: {
+      types: {
         clothhands: "Clothings Gloves",
         lighthands: "Light Gloves",
         mediumhands: "Medium Gloves",
@@ -121,7 +121,7 @@ export function SetupArmorChoice(html, data) {
     },
     {
       label: "Pants",
-      values: {
+      types: {
         clothpants: "Clothings Pants",
         lightpants: "Light Pants",
         mediumpants: "Medium Pants",
@@ -130,7 +130,7 @@ export function SetupArmorChoice(html, data) {
     },
     {
       label: "Boots",
-      values: {
+      types: {
         clothboots: "Clothings Boots",
         lightboots: "Light Boots",
         mediumboots: "Medium Boots",
@@ -139,7 +139,7 @@ export function SetupArmorChoice(html, data) {
     },
     {
       label: "Grafts",
-      values: {
+      types: {
         internalGraft: "Internal Graft",
         externalGraft: "External Graft",
         headGraft: "Head Graft",
@@ -148,19 +148,12 @@ export function SetupArmorChoice(html, data) {
       }
     },
   ];
-
   // Does not work
   if (html.hasClass("tidy5e-sheet")) {
     var choiseList = html.find(".details").find('[data-tidy-field="system.type.value"]');
-    
     toAddArray.forEach(element => {
-      let alreadyHasOptgroup = html.find(`[label="${element.label}"]`);
-      if(alreadyHasOptgroup.length > 0) {
-        alreadyHasOptgroup.remove();
-      }
-
       let choices = $(`<optgroup label="${element.label}"></optgroup>`);
-      for (const [armor, name] of Object.entries(element.values)) {
+      for (const [armor, name] of Object.entries(element.types)) {
         choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
       }
       choiseList.append(choices);
@@ -170,7 +163,7 @@ export function SetupArmorChoice(html, data) {
     var choiseList = html.find(".details").find('.form-group [name="system.type.value"]');
     toAddArray.forEach(element => {
       let choices = $(`<optgroup label="${element.label}"></optgroup>`);
-      for (const [armor, name] of Object.entries(element.values)) {
+      for (const [armor, name] of Object.entries(element.types)) {
         choices.append(`<option value="${armor}" ${data.system.type.value == armor ? 'selected' : ''}>${name}</option>`);
       }
       choiseList.append(choices);
