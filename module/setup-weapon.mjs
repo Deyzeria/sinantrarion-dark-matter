@@ -87,15 +87,16 @@ export function SetupWeapons() {
   });
 
   var ammunition = [
-    { abbr: "mine", id: "sFgGeoFjfZ6sIjIV" },
-    { abbr: "lightcannon", id: "K6yaF1trISjC9VTG" },
-    { abbr: "heavycannon", id: "K6yaF1trISjC9VTG" },
-    { abbr: "torpedo", id: "rgiE2mf9BfenWwmz" }
+    { abbr: "mine", id: "sFgGeoFjfZ6sIjIV", name: "Antimatter Mine" },
+    { abbr: "lightcannon", id: "K6yaF1trISjC9VTG", name: "Light Cannon Round" },
+    { abbr: "heavycannon", id: "K6yaF1trISjC9VTG", name: "Heavy Cannon Round" },
+    { abbr: "torpedo", id: "rgiE2mf9BfenWwmz", name: "Neutron Torpedo" }
   ];
 
   ammunition.forEach(ammo => {
-    CONFIG.DND5E.ammoIds[ammo.abbr] = `Compendium.sinantrarion-dark-matter.dark-matter-ship-parts.Item.${ammo.id}`;
-  })
+    CONFIG.DND5E.ammoIds[ammo.abbr] = `sinantrarion-dark-matter.dark-matter-ship-parts.${ammo.id}`;
+    CONFIG.DND5E.consumableTypes.ammo.subtypes[ammo.abbr] = ammo.name;
+  });
 }
 
 export function SetupWeaponChoice(html, data) {
