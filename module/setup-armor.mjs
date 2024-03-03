@@ -1,3 +1,5 @@
+import { toAddArray } from "../deyzeria-dark-matter.mjs";
+
 export function SetupArmors() {
   CONFIG.DND5E.armorIds = [];
 

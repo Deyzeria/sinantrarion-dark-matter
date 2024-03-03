@@ -1,5 +1,6 @@
 import * as armors from "./module/setup-armor.mjs";
 import * as weapons from "./module/setup-weapon.mjs";
+import { ShipConfig } from "./module/ship-config.mjs";
 import * as ships from "./module/ship-fields.mjs";
 
 const cusSkills = [{
@@ -23,6 +24,64 @@ const cusSkills = [{
   fullKey: "technology",
   icon: "icons/commodities/tech/detonator-timer.webp"
 }];
+
+export const toAddArray = [
+  {
+    label: "Extra Slots",
+    types: {
+      ring: "Ring",
+      neck: "Necklace",
+      face: "Face",
+      back: "Back"
+    }
+  },
+  {
+    label: "Helmet",
+    types: {
+      clothhat: "Clothings Helmet",
+      lighthat: "Light Helmet",
+      mediumhat: "Medium Helmet",
+      heavyhat: "Heavy Helmet",
+    }
+  },
+  {
+    label: "Gloves",
+    types: {
+      clothhands: "Clothings Gloves",
+      lighthands: "Light Gloves",
+      mediumhands: "Medium Gloves",
+      heavyhands: "Heavy Gloves",
+    }
+  },
+  {
+    label: "Pants",
+    types: {
+      clothpants: "Clothings Pants",
+      lightpants: "Light Pants",
+      mediumpants: "Medium Pants",
+      heavypants: "Heavy Pants",
+    }
+  },
+  {
+    label: "Boots",
+    types: {
+      clothboots: "Clothings Boots",
+      lightboots: "Light Boots",
+      mediumboots: "Medium Boots",
+      heavyboots: "Heavy Boots",
+    }
+  },
+  {
+    label: "Grafts",
+    types: {
+      internalGraft: "Internal Graft",
+      externalGraft: "External Graft",
+      headGraft: "Head Graft",
+      armsGraft: "Arms Graft",
+      legsGraft: "Legs Graft"
+    }
+  },
+];
 
 export const weaponManufacturers = {
   "": "",
@@ -269,69 +328,13 @@ Hooks.once('tidy5e-sheet.ready', (api) => {
     enabled: (params) => 
       (["vehicle"].includes(params.context.actor.type) && params.context.actor.system.vehicleType == "space") || (["npc"].includes(params.context.actor.type) && params.context.actor.system.details.type.value == 'ship'),
     openConfiguration: (params) => {
+      console.debug(params);
+      //ShipConfig.onShipConfigClicked.bind(params.app)(params.event);
       // TODO: For example, open another form to input some data.
       // https://kgar.github.io/foundry-vtt-tidy-5e-sheets/classes/ActorTraitsApi.html
     },
     openConfigurationTooltip: "Click to configure my module",
   });
-
-  var toAddArray = [
-    {
-      label: "Extra Slots",
-      types: {
-        ring: "Ring",
-        neck: "Necklace",
-        face: "Face",
-        back: "Back"
-      }
-    },
-    {
-      label: "Helmet",
-      types: {
-        clothhat: "Clothings Helmet",
-        lighthat: "Light Helmet",
-        mediumhat: "Medium Helmet",
-        heavyhat: "Heavy Helmet",
-      }
-    },
-    {
-      label: "Gloves",
-      types: {
-        clothhands: "Clothings Gloves",
-        lighthands: "Light Gloves",
-        mediumhands: "Medium Gloves",
-        heavyhands: "Heavy Gloves",
-      }
-    },
-    {
-      label: "Pants",
-      types: {
-        clothpants: "Clothings Pants",
-        lightpants: "Light Pants",
-        mediumpants: "Medium Pants",
-        heavypants: "Heavy Pants",
-      }
-    },
-    {
-      label: "Boots",
-      types: {
-        clothboots: "Clothings Boots",
-        lightboots: "Light Boots",
-        mediumboots: "Medium Boots",
-        heavyboots: "Heavy Boots",
-      }
-    },
-    {
-      label: "Grafts",
-      types: {
-        internalGraft: "Internal Graft",
-        externalGraft: "External Graft",
-        headGraft: "Head Graft",
-        armsGraft: "Arms Graft",
-        legsGraft: "Legs Graft"
-      }
-    },
-  ];
 
   toAddArray.forEach((group) => {
     api.config.item.registerCustomEquipmentTypeGroup(group);
