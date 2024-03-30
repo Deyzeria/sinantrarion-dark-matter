@@ -1,7 +1,7 @@
 {
   "id": "sinantrarion-dark-matter",
   "title": "Deyzeria's Dark Matter",
-  "version": "2.3.2",
+  "version": "2.4.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -12,7 +12,7 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "3.0.0"
+          "minimum": "3.1.0"
         }
       }
     ]

@@ -89,9 +89,9 @@ export const weaponManufacturers = {
   scav: "Scav",
   son: "Sisters of Nebula",
   velocity: "Velocity",
-  hyperion: "Hyperion",
+  limbus: "Limbus", // Hyperion
   havoc: "Havoc",
-  arcanixium: "Arcanixium",
+  arcanixium: "Arcanixium", // Maliwan
   centurion: "Centurion",
   pyrotorg: "PYROTORG",
   marauder: "Marauder"
@@ -325,7 +325,7 @@ Hooks.once('tidy5e-sheet.ready', (api) => {
   api.config.actorTraits.registerActorTrait({
     title: "Configure Ship",
     iconClass: "fa-solid fa-rocket",
-    enabled: (params) => 
+    enabled: (params) =>
       (["vehicle"].includes(params.context.actor.type) && params.context.actor.system.vehicleType == "space") || (["npc"].includes(params.context.actor.type) && params.context.actor.system.details.type.value == 'ship'),
     openConfiguration: (params) => {
       console.debug(params);

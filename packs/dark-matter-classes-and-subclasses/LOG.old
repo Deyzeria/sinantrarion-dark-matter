@@ -1,5 +1,5 @@
-2024/03/09-15:27:09.868 3af4 Recovering log #219
-2024/03/09-15:27:09.868 3af4 Level-0 table #221: started
-2024/03/09-15:27:09.870 3af4 Level-0 table #221: 86770 bytes OK
-2024/03/09-15:27:09.874 3af4 Delete type=0 #219
-2024/03/09-15:27:09.874 3af4 Delete type=3 #218
+2024/03/24-11:41:58.660 24ec Recovering log #238
+2024/03/24-11:41:58.660 24ec Level-0 table #240: started
+2024/03/24-11:41:58.663 24ec Level-0 table #240: 23449 bytes OK
+2024/03/24-11:41:58.667 24ec Delete type=0 #238
+2024/03/24-11:41:58.667 24ec Delete type=3 #237
