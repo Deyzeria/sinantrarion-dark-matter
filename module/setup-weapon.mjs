@@ -113,14 +113,14 @@ export function SetupWeaponChoice(html, data) {
   }
 
   if (data.item.system.properties.has('fixed')) {
-    var headerDetails = html.find(".details").children().eq(2);
+    var headerDetailsProp = html.find('[data-form-group-for="system.type.value"]').parent().children().eq(4);
     let fixedPosition = $(`<select name="flags.darkmatter.position"></select>`);
 
     for (const [key, name] of Object.entries(positionObject)) {
       fixedPosition.append(`<option value="${key}" ${data.item.flags.darkmatter?.position == key ? 'selected' : ''}>${name}</option>`);
     }
     let divPositionObject = $(`<div data-tidy-render-scheme="handlebars" class="form-group fixed-details"></div>`).append(`<label>Fixed Position</label>`).append(fixedPosition);
-    headerDetails.after(divPositionObject);
+    headerDetailsProp.after(divPositionObject);
   }
 }
 
